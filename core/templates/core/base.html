@@ -12,12 +12,16 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'core/style.css' %}">
 </head>
-</head>
+
 <body>
 
 	{% block content %}
 	{% endblock %}
-
+<script
+			  src="http://code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous"></script>
+    
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".btn_main").on("click",function(){
@@ -29,6 +33,30 @@
 			$("#" + class_id[2]+"_form").removeClass("invisible").addClass("visible");
 		});
 	});
+    
+    var recognition = new webkitSpeechRecognition();
+recognition.lang = "en-GB";
+
+
+$(document).keydown(function(e){
+    recognition.onresult = function(event) {
+    var interim_transcript = '';
+        interim_transcript = event.results[0][0].transcript;
+        alert(interim_transcript);
+        var url = "localhost:8000/senddata";
+        var data = {
+            name : interim_transcript
+        }
+        alert(interim_transcript);
+        $.post(url, data);
+    console.log(interim_transcript,final_transcript);
+    alert(interim_transcript);
+  };
+
+    recognition.start();
+});
+
+    
 </script>
 </body>
 </html>
