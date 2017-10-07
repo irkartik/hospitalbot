@@ -49,3 +49,13 @@ body{
 .hospital_detail{
 	margin: 10px
 }
+
+.list2{
+	position: relative;
+	z-index: 0;
+	top: -60px;
+}
+.list{
+	position: relative;
+	z-index: 1;
+}
