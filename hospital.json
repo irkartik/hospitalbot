@@ -1,0 +1,286 @@
+{
+  "name":"us-hospital-medical-center-location",
+  "title":"US Hospital Medical Center Location",
+  "description":"This data set provides a list of hospitals, which includes also medical centers in the USA with detailed geolocation identifiers, such as latitude and longitude of each hospital. The information about location of hospitals was obtained by geocoding of addresses and then was corrected using satellite images. The dataset also contains some other specific information such as adress, telephone number, type of care provided and number of beds available. It includes only hospital facilities and does not include nursing homes. The dataset represents location of Hospitals for 50 states and Washington D.C., Puerto Rico and US territories.",
+  "documentation":"The Homeland Infrastructure Foundation-Level Data (HIF-LD) provides National foundation-level geospatial data within the open public domain that can be useful to support community preparedness, resiliency, research, and more. This dataset represents locations of Hospitals for 50 states and Washington D.C., Puerto Rico and US territories by geographic latitude and longitude. It includes also other specific information such as address, telephone number, type of care provided and number of beds available. The dataset only includes hospital facilities and does not include nursing homes. Data for all the states was acquired from respective states departments or their open source websites and then geocoded and converted into a spatial database. After geocoding the exact spatial location of each point was moved to rooftops wherever possible and points which have been physically verified have been labelled \"Geocode\", \"Imagery\", \"Imagery with other\" and \"Unverified\" depending on the methodology used to move the points.",
+  "date_created":"2014-06-30",
+  "last_updated":"2016-5-17",
+  "version":"2016.07",
+  "update_frequency":"Irregular",
+  "temporal_coverage":"2014 to 2016",
+  "spatial_coverage":"USA",
+  "license":"John Snow Labs Standard License",
+  "sources":[
+    {
+      "name":"John Snow Labs"
+    },
+    {
+      "name":"Homeland Infrastructure Foundation-Level Data"
+    }
+  ],
+  "author":{
+    "name":"John Snow Labs",
+    "email":"support@JohnSnowLabs.com",
+    "web":"http://www.JohnSnowLabs.com"
+  },
+  "source_license_requirements":"N/A",
+  "citation":"Homeland Infrastructure Foundation-Level Data (HIFLD)",
+  "keywords":[
+    "Hospital",
+    "Medical Center",
+    "Clinical Laboratory",
+    "Medical Clinic",
+    "Medical Centre",
+    "Medical Number",
+    "Hospital Number"
+  ],
+  "other_titles":[
+    "US Hospital Medicine Clinic Location",
+    "US Hospital Medicine Center Location",
+    "US Hospital Medical Clinic Location",
+    "US Healthcare Hospital Location"
+  ],
+  "resources":[
+    {
+      "path":"data.csv",
+      "name":"us-hospital-medical-center-location-csv",
+      "format":"csv",
+      "mediatype":"text/csv",
+      "schema":"us-hospital-medical-center-location-schema"
+    },
+    {
+      "path":"data.json",
+      "name":"us-hospital-medical-center-location-json",
+      "format":"json",
+      "mediatype":"application/json",
+      "schema":"us-hospital-medical-center-location-schema"
+    }
+  ],
+  "schemas":[
+    {
+      "us-hospital-medical-center-location-schema":{
+        "fields":[
+          {
+            "name":"Fid",
+            "description":"Federal identifier code of the hospital",
+            "type":"integer",
+            "constraints":{
+              "unique":true,
+              "required":true,
+              "level":"Nominal"
+            }
+          },
+          {
+            "name":"ID",
+            "description":"Identifier number of the hospital",
+            "type":"integer",
+            "constraints":{
+              "unique":true,
+              "level":"Nominal"
+            }
+          },
+          {
+            "name":"Name",
+            "description":"Official name of the hospital",
+            "type":"string",
+            "constraints":{
+              "required":true
+            }
+          },
+          {
+            "name":"Address",
+            "description":"Address of the hospital",
+            "type":"string",
+            "constraints":{
+              "required":true
+            }
+          },
+          {
+            "name":"Address_2",
+            "description":"Secondary address of the hospital",
+            "type":"string",
+            "constraints":{
+              "required":true
+            }
+          },
+          {
+            "name":"City",
+            "description":"City where the hospital is located",
+            "type":"string",
+            "constraints":{
+              "required":true
+            }
+          },
+          {
+            "name":"State",
+            "description":"State where hospital is located",
+            "type":"string",
+            "constraints":{
+              "required":true
+            }
+          },
+          {
+            "name":"ZIP",
+            "description":"ZIP postal code of the hospital",
+            "type":"string"
+          },
+          {
+            "name":"Telephone",
+            "description":"Telephone number of the hospital",
+            "type":"string",
+            "constraints":{
+              "required":true
+            }
+          },
+          {
+            "name":"Type",
+            "description":"",
+            "type":"string",
+            "constraints":{
+              "required":true
+            }
+          },
+          {
+            "name":"Population",
+            "description":"Population identifier number of the hospital",
+            "type":"integer",
+            "constraints":{
+              "required":true,
+              "level":"Nominal"
+            }
+          },
+          {
+            "name":"County",
+            "description":"County where the hospital is located",
+            "type":"string",
+            "constraints":{
+              "required":true
+            }
+          },
+          {
+            "name":"County_Fips",
+            "description":"Federal information processing Standard (FIPS) county code",
+            "type":"integer",
+            "constraints":{
+              "level":"Nominal"
+            }
+          },
+          {
+            "name":"Country",
+            "description":"Country where the hospital is located",
+            "type":"string",
+            "constraints":{
+              "required":true
+            }
+          },
+          {
+            "name":"Latitude",
+            "description":"Latitude of the hospital location",
+            "constraints":{
+              "required":true,
+              "level":"Interval"
+            }
+          },
+          {
+            "name":"Longitude",
+            "description":"Longitude of the hospital location",
+            "constraints":{
+              "required":true,
+              "level":"Interval"
+            }
+          },
+          {
+            "name":"Naics_Code",
+            "description":"North american industry classification System (NAICS) code of the hospital",
+            "type":"integer",
+            "constraints":{
+              "required":true,
+              "level":"Nominal"
+            }
+          },
+          {
+            "name":"Naics_Desc",
+            "description":"Description for North american industry classification System (NAICS) code",
+            "type":"string",
+            "constraints":{
+              "required":true
+            }
+          },
+          {
+            "name":"Source",
+            "description":"Website from which the data were obtained",
+            "type":"string",
+            "constraints":{
+              "required":true
+            }
+          },
+          {
+            "name":"Website",
+            "description":"URL adress of the hospital",
+            "type":"string"
+          },
+          {
+            "name":"State_ID",
+            "description":"State identifier number of the hospital",
+            "type":"string"
+          },
+          {
+            "name":"Alt_Name",
+            "description":"Alternative name of the hospital",
+            "type":"string"
+          },
+          {
+            "name":"State_Fips",
+            "description":"State federal information processing Standard (FIPS) identifier number",
+            "type":"integer",
+            "constraints":{
+              "required":true,
+              "level":"Nominal"
+            }
+          },
+          {
+            "name":"Owner",
+            "description":"Owner of the hospital",
+            "type":"string",
+            "constraints":{
+              "required":true
+            }
+          },
+          {
+            "name":"Beds",
+            "description":"Number of beds in the hospital",
+            "type":"integer",
+            "constraints":{
+              "required":true,
+              "level":"Ratio"
+            }
+          },
+          {
+            "name":"Trauma",
+            "description":"Trauma assistance level of the hospital",
+            "type":"string",
+            "constraints":{
+              "required":true
+            }
+          },
+          {
+            "name":"Helipad",
+            "description":"Availability of helicopter landing pad",
+            "type":"string",
+            "constraints":{
+              "required":true
+            }
+          },
+          {
+            "name":"Date_Created",
+            "description":"Date when the data where obtained",
+            "type":"date",
+            "constraints":{
+              "required":true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

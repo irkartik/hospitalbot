@@ -1,0 +1,15 @@
+<h1>search by city</h1>
+<form action="/searchbycity" method="post">
+	{% csrf_token %}
+    <label for="hospital_city">Enter state: </label>
+    <input id="city" type="text" name="city">
+    <input type="submit" value="OK">
+</form>
+
+<h1>search by name</h1>
+<form action="/searchbyname" method="post">
+	{% csrf_token %}
+    <label for="hospital_name">Enter name: </label>
+    <input id="name" type="text" name="name">
+    <input type="submit" value="OK">
+</form>
