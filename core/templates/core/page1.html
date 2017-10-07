@@ -7,11 +7,11 @@
 			<h3 class="hos_bot">HOS BOT</h3>
 		</div>
 		<div class="col-sm-2"></div>
-		<div class="col-sm-6 text-right">
+		<!-- <div class="col-sm-6 text-right">
 			<form>
 				<input type="text" class="form-control" name="search" size="50" id="search_box" placeholder="Search website">
 			</form>
-		</div>
+		</div> -->
 	</div>
 	<div class="row hidden-lg hidden-sm hidden-md">
 		<div class="col-xs-5 text-center">
@@ -40,24 +40,20 @@
 <br class="hidden-xs">
 <div class="row">
 	<div class="col-xs-3"></div>
-	<div class="text-center col-xs-6">
+	<!-- <div class="text-center col-xs-6">
 		<form action="/searchbycity" id="city" method="post">
-			{% crpf_token %}
+			{% csrf_token %}
 		  <input class="form-control" list="browsers" name="hospital" placeholder="Search here">
 		  <datalist id="browsers">
 		  	{% for hospital in all_hospitals %}
-			    <option value="{{hospital.name}}"></option>
+			    <option value="{{hospital.city}}"></option>
 		    {% endfor %}
-		    <!-- <option value="Firefox"></option>
-		    <option value="Chrome"></option>
-		    <option value="Opera"></option>
-		    <option value="Safari"></option> -->
 		  </datalist>
 		</form>
 		</div>
 		<div class="col-xs-3">  
 		  <input form="city" type="submit">
-		</div>
+		</div> -->
 	<!-- 	<form action="#" method="post">
 		  <input list="browsers" name="browser" placeholder="Search here">
 		  <datalist id="browsers">
@@ -70,44 +66,77 @@
 		  <input type="submit">
 		</form>
 	 -->
+
+	 <div class="text-center col-xs-6">
+		<form action="/searchbycity" class="list invisible" id="city_list_form" method="post">
+		  <input class="form-control" list="city" name="hospital" size="5" placeholder="Search hospital by city here">
+		  {% csrf_token %}
+		  <datalist id="city">
+		    {% for hospital in all_hospitals %}
+			    <option value="{{hospital.city}}"></option>
+		    {% endfor %}
+		  </datalist>
+		  <input type="submit">
+		</form>
+		<form action="/searchbyname" class="list list2 invisible" id="name_list_form" method="post">
+		  <input class="form-control" list="name" name="name" placeholder="Search hospital by name here">
+		  <datalist id="name">
+		    <option value="abcd"></option>
+		    <option value="efgh"></option>
+		    <option value="ijkl"></option>
+		    <option value="mnop"></option>
+		    <option value="qrst"></option>
+		  </datalist>
+		  <input type="submit">
+		 </form>		
+	</div>
+
+
+
 	</div>
 <br>
-<!-- <div class="container">	
+{% for hospital in hospital_list %}
+<div class="container">	
 	<div class="row hospital_main">
 		<div class="col-xs-2">
-			<img src="hospital.png" width="120px">
+			{% load static %}
+			<img src="{% static 'core/media/hospital.png' %}" width="120px">
 		</div>	
 		<div class="col-xs-10">
 			<div class="row hospital_detail" >
-				<div class=" text-center col-xs-10">
-					<h4>Hospital Name</h4>
+				<div class=" text-center col-xs-8">
+					<h4>{{hospital.name}}</h4>
+				</div>
+				<div class=" text-center col-xs-2">
+					<h5><span class="glyphicon glyphicon-earphone"></span>&nbsp; {{hospital.telephone}}</h5>
 				</div>
 			</div>
-			<div class="row hospital_detail" >
-				<div class="col-xs-3 text-center">
-					City:Amdhsv
+				<div class="row hospital_detail" >
+					<div class="col-xs-3 text-center">
+						City: {{hospital.city}}
+					</div>
+					<div class="col-xs-3 text-center">
+						State: {{hospital.state}}
+					</div>
+					<div class="col-xs-3 text-center">
+						County: {{hospital.county}}
+					</div>
+					<div class="col-xs-3 text-center">
+						Zip: {{hospital.pin}}
+					</div>
 				</div>
-				<div class="col-xs-3 text-center">
-					State:Amdhsv
-				</div>
-				<div class="col-xs-3 text-center">
-					County:Amdhsv
-				</div>
-				<div class="col-xs-3 text-center">
-					Zip:Amdhsv
-				</div>
-			</div>
 			<div class="row hospital_detail" >
 				<div class="col-xs-1"></div>
 				<div class="col-xs-4 text-center">
-					<button class="btn btn-info">Wisit Website</button>
+					<a href="{{hospital.website}}"><button class="btn btn-info">Wisit Website</button></a>
 				</div>
 				<div class="col-xs-4 text-center">
-					<button class="btn btn-info">Get Directions</button>
+					<a href="{{hospital.mapurl}}"><button class="btn btn-info">Get Directions</button></a>
 				</div>
 			</div>
 		</div>
 	</div>
-</div> -->
+</div>
+{% endfor %}
 {% endblock %}
 

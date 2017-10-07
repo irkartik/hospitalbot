@@ -1,6 +1,18 @@
-{% extends 'core/base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
 
-{% block content %}
+<body>
 <nav class="navbar">
 	<div class="row hidden-xs">
 		<div class="col-sm-3 text-center">
@@ -37,42 +49,38 @@
 	</div>
 </div>
 <br>
-<br class="hidden-xs">
 <div class="row">
 	<div class="col-xs-3"></div>
 	<div class="text-center col-xs-6">
-		<form action="/searchbycity" id="city" method="post">
-			{% crpf_token %}
-		  <input class="form-control" list="browsers" name="hospital" placeholder="Search here">
-		  <datalist id="browsers">
-		  	{% for hospital in all_hospitals %}
-			    <option value="{{hospital.name}}"></option>
-		    {% endfor %}
-		    <!-- <option value="Firefox"></option>
-		    <option value="Chrome"></option>
-		    <option value="Opera"></option>
-		    <option value="Safari"></option> -->
-		  </datalist>
-		</form>
-		</div>
-		<div class="col-xs-3">  
-		  <input form="city" type="submit">
-		</div>
-	<!-- 	<form action="#" method="post">
-		  <input list="browsers" name="browser" placeholder="Search here">
-		  <datalist id="browsers">
-		    <option value="Internet Explorer">
-		    <option value="Firefox">
-		    <option value="Chrome">
-		    <option value="Opera">
-		    <option value="Safari">
+		<form action="#" class="list invisible" id="city_list_form" method="post">
+		  <input class="form-control" list="city" name="hospital" size="5" placeholder="Search hospital by city here">
+		  <datalist id="city">
+		    <option value="NY"></option>
+		    <option value="Cali"></option>
+		    <option value="Vegas"></option>
+		    <option value="washington"></option>
+		    <option value="carolina"></option>
 		  </datalist>
 		  <input type="submit">
 		</form>
-	 -->
+		<form action="#" class="list list2 invisible" id="name_list_form" method="post">
+		  <input class="form-control" list="name" name="name" placeholder="Search hospital by name here">
+		  <datalist id="name">
+		    <option value="abcd"></option>
+		    <option value="efgh"></option>
+		    <option value="ijkl"></option>
+		    <option value="mnop"></option>
+		    <option value="qrst"></option>
+		  </datalist>
+		  <input type="submit">
+		 </form>		
 	</div>
+	<div class="col-xs-3">  
+		 
+	</div>
+</div>
 <br>
-<!-- <div class="container">	
+<div class="container">	
 	<div class="row hospital_main">
 		<div class="col-xs-2">
 			<img src="hospital.png" width="120px">
@@ -108,6 +116,20 @@
 			</div>
 		</div>
 	</div>
-</div> -->
-{% endblock %}
+</div>
 
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".btn_main").on("click",function(){
+			$(".btn_main").removeClass("active");
+			$(this).addClass("active");
+			var class_id = $(this).prop('class').split(" ");
+			$(".list").addClass("invisible");
+			console.log("#" + class_id[2]+"_form");
+			$("#" + class_id[2]+"_form").removeClass("invisible").addClass("visible");
+		});
+	});
+</script>
+</body>
+</html>

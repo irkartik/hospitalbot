@@ -7,21 +7,21 @@
 			<h3 class="hos_bot">HOS BOT</h3>
 		</div>
 		<div class="col-sm-2"></div>
-		<div class="col-sm-6 text-right">
+		<!-- <div class="col-sm-6 text-right">
 			<form>
 				<input type="text" class="form-control" name="search" size="50" id="search_box" placeholder="Search website">
 			</form>
-		</div>
+		</div> -->
 	</div>
 	<div class="row hidden-lg hidden-sm hidden-md">
 		<div class="col-xs-5 text-center">
 			<h3 class="hos_bot">HOS BOT</h3>
 		</div>
-		<div class="col-xs-6 text-right">
+		<!-- <div class="col-xs-6 text-right">
 			<form>
 				<input type="text" class="form-control" name="search" size="50" id="search_box" placeholder="Search website">
 			</form>
-		</div>
+		</div> -->
 	</div>
 </nav>
 <br>
@@ -40,24 +40,24 @@
 <br class="hidden-xs">
 <div class="row">
 	<div class="col-xs-3"></div>
-	<div class="text-center col-xs-6">
+	<!-- <div class="text-center col-xs-6">
 		<form action="/searchbycity" id="city" method="post">
-			{% crpf_token %}
-		  <input class="form-control" list="browsers" name="hospital" placeholder="Search here">
+			{% csrf_token %}
+		  <input class="form-control" list="browsers" name="city" placeholder="Search here">
 		  <datalist id="browsers">
 		  	{% for hospital in all_hospitals %}
-			    <option value="{{hospital.name}}"></option>
+			    <option value="{{hospital.city}}"></option>
 		    {% endfor %}
 		    <!-- <option value="Firefox"></option>
 		    <option value="Chrome"></option>
 		    <option value="Opera"></option>
-		    <option value="Safari"></option> -->
+		    <option value="Safari"></option>
 		  </datalist>
 		</form>
 		</div>
 		<div class="col-xs-3">  
 		  <input form="city" type="submit">
-		</div>
+		</div> --> 
 	<!-- 	<form action="#" method="post">
 		  <input list="browsers" name="browser" placeholder="Search here">
 		  <datalist id="browsers">
@@ -70,6 +70,29 @@
 		  <input type="submit">
 		</form>
 	 -->
+	 <div class="text-center col-xs-6">
+		<form action="/searchbycity" class="list invisible" id="city_list_form" method="post">
+		  <input class="form-control" list="city" name="city" size="5" placeholder="Search hospital by city here">
+		  {% csrf_token %}
+		  <datalist id="city">
+		    {% for hospital in all_hospitals %}
+			    <option value="{{hospital.city}}"></option>
+		    {% endfor %}
+		  </datalist>
+		  <input type="submit">
+		</form>
+
+		<form action="/searchbyname" class="list list2 invisible" id="name_list_form" method="post">
+			{% csrf_token %}
+		  <input class="form-control" list="name" name="name" placeholder="Search hospital by name here">
+		  <datalist id="name">
+		    {% for hospital in all_hospitals %}
+			    <option value="{{hospital.name}}"></option>
+		    {% endfor %}
+		  </datalist>
+		  <input type="submit">
+		 </form>		
+	</div>
 	</div>
 <br>
 <!-- <div class="container">	
