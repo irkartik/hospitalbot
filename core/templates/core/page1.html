@@ -69,9 +69,9 @@
 
 	 <div class="text-center col-xs-6">
 		<form action="/searchbycity" class="list invisible" id="city_list_form" method="post">
-		  <input class="form-control" list="city" name="hospital" size="5" placeholder="Search hospital by city here">
+		  <input class="form-control" list="city1" name="city1" size="5" placeholder="Search hospital by city here">
 		  {% csrf_token %}
-		  <datalist id="city">
+		  <datalist id="city1">
 		    {% for hospital in all_hospitals %}
 			    <option value="{{hospital.city}}"></option>
 		    {% endfor %}
@@ -79,13 +79,11 @@
 		  <input type="submit">
 		</form>
 		<form action="/searchbyname" class="list list2 invisible" id="name_list_form" method="post">
-		  <input class="form-control" list="name" name="name" placeholder="Search hospital by name here">
-		  <datalist id="name">
-		    <option value="abcd"></option>
-		    <option value="efgh"></option>
-		    <option value="ijkl"></option>
-		    <option value="mnop"></option>
-		    <option value="qrst"></option>
+		  <input class="form-control" list="name1" name="name1" placeholder="Search hospital by name here">
+		  <datalist id="name1">
+		    {% for hospital in all_hospitals %}
+			    <option value="{{hospital.name}}"></option>
+		    {% endfor %}
 		  </datalist>
 		  <input type="submit">
 		 </form>		
