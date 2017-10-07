@@ -146,3 +146,9 @@ def searchbyname(request):
 	}
 
 	return render(request, 'core/page1.html', context)
+
+def senddata(request):
+	data = request.POST.get('name')
+	print(data)
+
+	return HttpResponse('fuck off')

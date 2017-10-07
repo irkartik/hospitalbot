@@ -21,7 +21,6 @@
 			  src="http://code.jquery.com/jquery-3.2.1.min.js"
 			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 			  crossorigin="anonymous"></script>
-    
 <script type="text/javascript">
 	$(document).ready(function(){
 		$(".btn_main").on("click",function(){
@@ -43,14 +42,12 @@ $(document).keydown(function(e){
     var interim_transcript = '';
         interim_transcript = event.results[0][0].transcript;
         alert(interim_transcript);
-        var url = "localhost:8000/senddata";
+        var url = "{% url 'core:senddata' %}";
         var data = {
-            name : interim_transcript
+            name : interim_transcript,
+            csrfmiddlewaretoken: '{{ csrf_token }}',
         }
-        alert(interim_transcript);
         $.post(url, data);
-    console.log(interim_transcript,final_transcript);
-    alert(interim_transcript);
   };
 
     recognition.start();
